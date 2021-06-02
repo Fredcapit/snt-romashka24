@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-
+axios.defaults.baseURL=document.baseURI;
 export const api={
 
     getKeyCode: async (old_key)=>{

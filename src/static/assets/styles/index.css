@@ -1,0 +1,24 @@
+:root {
+    --ff-title: 'Maler'
+}
+@font-face {
+    font-family: "Maler";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    /* Браузер сначала попробует найти шрифт локально */
+    src:   local("Maler"),       /* Если не получилось, загрузит woff2 */
+         url("../preload/fonts/Maler.ttf") format("opentype"); 
+         
+   }
+@font-face {
+    font-family: 'Winston';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("../preload/fonts/Winston/Winston-Regular.ttf") format("opentype");
+}
+
+
+@import url('./index_min500x600.css');
+@import url('./index_min200x300.css');

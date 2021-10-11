@@ -1,18 +1,18 @@
-import { routerMiddleware } from 'connected-react-router';
-
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import {reducer}  from './reducer';
-import { validateEmail} from './middleware/emailValidation';
+import { reducer } from './reducer';
+import { validateEmail } from './middleware/emailValidation';
 import { email_send_timer } from './middleware/email_sent/middleware'
-
+export const history = createBrowserHistory()
 export default function configureStore(initialState) {
-  
-  
+
+
   const middleware = [
-    thunk,
-    validateEmail,
-    email_send_timer
+    routerMiddleware(history),
+    thunk
+
   ];
 
   // In development, use the browser's Redux dev tools extension if installed
@@ -22,15 +22,16 @@ export default function configureStore(initialState) {
     enhancers.push(window.devToolsExtension());
   }
 
-  const rootReducer = () =>combineReducers({
+  const rootReducer = (history) => combineReducers({
+    router: connectRouter(history),
     reducer,
   });
 
   return createStore(
-    rootReducer(),
+    rootReducer(history),
     initialState,
     compose(
       applyMiddleware(...middleware), ...enhancers)
   );
-  
+
 }

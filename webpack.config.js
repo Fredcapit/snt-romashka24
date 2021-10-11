@@ -9,6 +9,11 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const ESLintPlugin = require('eslint-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
+const { link } = require('fs')
+const { options } = require('less')
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+
+
 
 
 const paths = {
@@ -18,10 +23,11 @@ const paths = {
 }
 
 
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = !isDev
 
-const optimization = () => {
+
+const optimization = (env, options) => {
+    const isDev = options.mode === 'development';
+    const isProd = !isDev;
     const config = {
         splitChunks: {
             chunks: 'all'
@@ -39,7 +45,7 @@ const optimization = () => {
     return config
 }
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[fullhash].${ext}`
+const filename = (ext, env, options) => options.mode === 'development' ? `[name].${ext}` : `[name].[fullhash].${ext}`
 
 const cssLoaders = extra => {
     const loaders = [
@@ -93,12 +99,23 @@ const jsLoaders = () => {
 
 
 
-const plugins = () => {
+const plugins = (env, options) => {
+    const isDev = options.mode === 'development';
+    const isProd = !isDev;
     const base = [
         new HTMLWebpackPlugin({
             template: 'static/index.html',
             minify: {
                 collapseWhitespace: isProd
+            }
+        }),
+        new PreloadWebpackPlugin({
+            rel: 'preload',
+            as(entry) {
+                if (/\(fonts)$/.test(entry)) return 'font';
+                if (/\.woff$/.test(entry)) return 'font';
+                if (/\.png$/.test(entry)) return 'image';
+                return 'script';
             }
         }),
         new CleanWebpackPlugin(),
@@ -111,113 +128,131 @@ const plugins = () => {
             ]
         }),
         new MiniCssExtractPlugin({
-            filename: filename('css')
+            filename: filename('css', env, options)
         }),
         new NodePolyfillPlugin()
 
 
     ]
 
-    if (isProd) {
+    if (options.mode === 'production') {
         base.push(new BundleAnalyzerPlugin())
         base.push(new CompressionPlugin({
             algorithm: "gzip",
-            test: /\.js(\?.*)?$/i,
+            test: /\.(js|css)(\?.*)?$/i,
         }))
+
     }
-    if (isDev) {
+    if (options.mode === 'development') {
         base.push(new ESLintPlugin())
     }
     return base
 }
 
-const config = {
-    context: path.resolve(__dirname, paths.src),
-    mode: 'development',
-    entry: {
-        main: ['@babel/polyfill', './app.jsx'],
+const config = (env, options) => {
 
-    },
-    output: {
-        filename: filename('js'),
-        path: path.resolve(__dirname, paths.build)
-    },
-    resolve: {
-        extensions: ['.js', '.json', '.png', '.jsx'],
-        alias: {
-            '@store': path.resolve(__dirname, paths.src, 'store'),
-            '@': path.resolve(__dirname, paths.src),
-            '@extensions': path.resolve(__dirname, paths.src,'extensions'),
-        }
-    },
-    optimization: optimization(),
-    devServer: {
+    return {
+        context: path.resolve(__dirname, paths.src),
+        mode: 'development',
+        entry: {
+            main: ['@babel/polyfill', './app.jsx'],
 
-        port: 4200,
-        hot: isDev,
-        compress: true
-    },
-
-    plugins: plugins(),
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: cssLoaders()
-            },
-            {
-                test: /\.less$/,
-                use: cssLoaders('less-loader')
-            },
-            {
-                test: /\.s[ac]ss$/,
-                use: cssLoaders('sass-loader')
-            },
-            {
-                test: /\.(png|jpg|svg|gif)$/,
-                loader: 'file-loader',
-                options: {
-                    outputPath: path.resolve(__dirname, paths.build),
-                },
-            },
-            {
-                test: /\.(ttf|woff|woff2|eot)$/,
-                loader: 'file-loader',
-                options: {
-                    outputPath: path.resolve(__dirname, paths.build),
-                },
-            },
-            {
-                test: /\.xml$/,
-                use: ['xml-loader']
-            },
-            {
-                test: /\.csv$/,
-                use: ['csv-loader']
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: jsLoaders()
-            },
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: babelOptions('@babel/preset-typescript')
-                }
-            },
-            {
-                test: /\.jsx$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: babelOptions('@babel/preset-react')
-                }
+        },
+        output: {
+            filename: filename('js', env, options),
+            path: path.resolve(__dirname, paths.build)
+        },
+        resolve: {
+            extensions: ['.js', '.json', '.png', '.jsx'],
+            alias: {
+                '@store': path.resolve(__dirname, paths.src, 'store'),
+                '@': path.resolve(__dirname, paths.src),
+                '@extensions': path.resolve(__dirname, paths.src, 'extensions'),
+                '@img': path.resolve(__dirname, paths.src, 'static/assets/img'),
+                '@downloads': path.resolve(__dirname, paths.src, 'static/downloads'),
             }
-        ]
+        },
+        optimization: optimization(env, options),
+        devServer: {
+
+            port: 4200,
+            hot: options.mode === 'development',
+            compress: true
+        },
+
+        plugins: plugins(env, options),
+        module: {
+            rules: [
+                {
+                    test: /\.css$/,
+                    use: cssLoaders()
+                },
+                {
+                    test: /\.less$/,
+                    use: cssLoaders('less-loader')
+                },
+                {
+                    test: /\.s[ac]ss$/,
+                    use: cssLoaders('sass-loader')
+                },
+                {
+                    test: /\.(png|jpg|svg|gif|webp)$/,
+                    loader: 'file-loader',
+                    exclude: /downloads/,
+                    options: {
+                        outputPath: 'assets/img',
+                    },
+                },
+                {
+                    test: /.*(downloads).*\.*$/,
+                    loader: 'file-loader',
+
+                    options: {
+                        outputPath: 'downloads',
+                        name: '[name].[ext]'
+                    }
+                },
+                {
+                    test: /\.(ttf|woff|woff2|eot)$/,
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: 'assets/fonts',
+                    },
+                },
+                {
+                    test: /\.xml$/,
+                    use: ['xml-loader']
+                },
+                {
+                    test: /\.csv$/,
+                    use: ['csv-loader']
+                },
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: jsLoaders()
+                },
+                {
+                    test: /\.ts$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: babelOptions('@babel/preset-typescript')
+                    }
+                },
+                {
+                    test: /\.jsx$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: babelOptions('@babel/preset-react')
+                    }
+                }
+            ]
+        }
     }
 }
 
-module.exports = config;
+module.exports = (env, options) => {
+    return config(env, options)
+}

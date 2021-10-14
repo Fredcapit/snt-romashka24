@@ -136,7 +136,7 @@ const plugins = (env, options) => {
     ]
 
     if (options.mode === 'production') {
-        base.push(new BundleAnalyzerPlugin())
+        // base.push(new BundleAnalyzerPlugin())
         base.push(new CompressionPlugin({
             algorithm: "gzip",
             test: /\.(js|css)(\?.*)?$/i,

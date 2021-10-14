@@ -150,7 +150,6 @@ const plugins = (env, options) => {
 }
 
 const config = (env, options) => {
-
     return {
         context: path.resolve(__dirname, paths.src),
         mode: 'development',

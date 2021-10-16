@@ -124,6 +124,10 @@ const plugins = (env, options) => {
                 {
                     from: path.resolve(__dirname, paths.src, 'static/assets/favicon.ico'),
                     to: path.resolve(__dirname, paths.build)
+                },
+                {
+                    from: path.resolve(__dirname, paths.src, 'static/robots.txt'),
+                    to: path.resolve(__dirname, paths.build)
                 }
             ]
         }),

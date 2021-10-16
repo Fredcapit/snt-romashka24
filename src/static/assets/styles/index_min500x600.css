@@ -1,192 +1,199 @@
 
-   @media screen and (min-width: 500px) {
+@media screen and (min-width: 500px) {
 /* Default Settings */
-div,
-p,
-article,
-section,
-main {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    display: block;
-}
+    div,p,article,section,main {
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+        display: block;
+    }
 
-body {
-margin: 0 0 0 0;
-min-height: 650px;
-}
+    body {
+        margin: 0 0 0 0;
+        min-height: 650px;
+    }
 
-#root {
-    margin: 0 0 0 0;
-    height: 100vh;
-    min-height: 650px;
-    display: grid;
-    grid-template-rows: 1fr 80% 1fr;
-}
-main {
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-    display: grid !important;
-    grid-template-rows: 5rem 70% 1fr;
-    margin: 0 5% 0 5% !important;
-}
+    #root {
+        margin: 0 0 0 0;
+        height: 100vh;
+        min-height: 650px;
+        display: grid;
+        grid-template-rows: 1fr 80% 1fr;
+    }
 
+    main {
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        display: grid !important;
+        grid-template-rows: 5rem 70% 1fr;
+        margin: 0 5% 0 5% !important;
+    }
 
-#header {
-    font-family: var(--ff-title);
-    font-size: 3rem;
-    text-align: center;
-    display: block;
-    width: 100%;
-   
-}
-#header p:first-of-type{
-    cursor:pointer;
-}
-#header>p:nth-child(2){
-    font-size: 1rem;
-    font-family: Winston;
-}
-#header::after{
-    content: '';
-    display: block;
-    width: 90%;
-    height: 2px;
-    background-color: black;
-    margin-left: 5%;
-    margin-right: 5%;
+    #header {
+        font-family: var(--ff-title);
+        font-size: 3rem;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+
+    #header p:first-of-type{
+        cursor:pointer;
+    }
+
+    #header>p:nth-child(2){
+        font-size: 1rem;
+        font-family: var(--ff-regular);
+    }
     
-}
+    #header::after{
+        content: '';
+        display: block;
+        width: 90%;
+        height: 2px;
+        background-color: black;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 
+    #content {
+        display: grid;
+        grid-template-rows: 1fr 90% ;
+    }
 
-#content {
-    display: grid;
-    grid-template-rows: 1fr 90% ;
-    
-}
-ul.downloads {
-    margin: 0 30% 0 20%;
-    font-family: 'Winston';
-    font-size: 1em;
-}
-ul.site_menu{
+    ul.downloads {
+        margin: 0 30% 0 20%;
+        font-family: var(--ff-regular);
+        font-size: 1em;
+    }
 
-    margin-left: 30%;
-    margin-right: 20%;
-    font-family: 'maler';
-    font-size: 1em;
+    ul.site_menu{
+        margin-left: 30%;
+        margin-right: 20%;
+        font-family: var(--ff-title);
+        font-size: 1em;
+    }
 
-}
-ul.site_menu>li{
-    margin-top: 1em;
-    cursor: pointer;
-}
+    ul.site_menu>li{
+        margin-top: 1em;
+        cursor: pointer;
+    }
 
-ul.site_menu>li:hover{
-   
-   transition-property: background-color;
-   transition-duration: .8s;
-  background-color: rgb(103,246,74);
-   
-}
+    ul.site_menu>li:hover{
+        transition-property: background-color;
+        transition-duration: .8s;
+        background-color: rgb(103,246,74);
+    }
 
-#content>h1{
-    text-align: center;
-    font-family: Maler;
-    font-size: 2em;
-}
-#content>h2{
-    text-align: center;
-    font-family: Maler;
-    font-size: 1em;
-}
-#content>h3{
-    text-align: center;
-    font-family: 'Winston';
-    font-size: 1em;
-}
-#content>div {
-    font-family: 'Winston';
-    margin: 0 5% 0 5% ;
-    overflow: auto;
-}
-div.title_content{
-    overflow: hidden !important;
-}
-#content>div>img{
-    object-fit: cover;
-    width: 90%;
-    height: 100%;
-    margin: 0 5% 0 5%;
-    overflow: hidden;
-}
-#content p{
-    text-align: justify;
-    text-indent: 1.5em;
-    padding: 0 5% 0 5%;
-}
-#content #goals li{
-    padding-top: 10px;
-    text-align: justify;
-}
-#content dl#bank_info  {
-    margin: 0 5% 0 5%;
-}
-#content #bank_info dt {
-    float: left;
-    clear: left;
-    width: 150px;
-    font-weight: 700;
-    font-family: Winston;
-    margin-block-start: 5px;
-}
-#content #bank_info dd {
-    float: left;
-    padding-left: 0;
-    text-indent: 0;
-    margin-left: 0;
-    font-family: Winston;
-}
-#content #contacts {
-    text-indent: 0;
-}
-#content #contacts p {
-    text-indent: 0;
-    padding: 0 5% 0 5%;
-}
-#content #contacts a {
-    padding: 0 5% 0 5%;
-}
-#footer::before{
-    content: '';
-    display: inline-block;
-    width: 90%;
-    height: 2px;
-    background-color: black;
-    
-    margin: 0 5% 0 5%;
-}
-#footer {
-    padding: 0 0 0 0;
-}
-#footer>p {
-    
-    font-family: var(--ff-title);
-    font-variant-caps: titling-caps;
-    font-size: 2rem;
-    font-weight: 500;
-    text-align: center;
-    display: block
-}
+    #content>h1{
+        text-align: center;
+        font-family: var(--ff-title);
+        font-size: 2em;
+    }
+    #content>h2{
+        text-align: center;
+        font-family: var(--ff-title);
+        font-size: 1em;
+    }
 
-#footer p {
-    cursor: pointer;
-}
-#footer p.privacy_link {
-    cursor: pointer;
-    font-family: 'Winston';
-    font-size: 1rem;
+    #content>h3{
+        text-align: center;
+        font-family: var(--ff-regular);
+        font-size: 1em;
+    }
 
-}
+    #content>div {
+        font-family: var(--ff-regular);
+        margin: 0 5% 0 5% ;
+        overflow: auto;
+    }
+
+    div.title_content{
+        overflow: hidden !important;
+    }
+
+    #content>div>img{
+        object-fit: cover;
+        width: 90%;
+        height: 100%;
+        margin: 0 5% 0 5%;
+        overflow: hidden;
+    }
+
+    #content p{
+        text-align: justify;
+        text-indent: 1.5em;
+        padding: 0 5% 0 5%;
+    }
+
+    #content #goals li{
+        padding-top: 10px;
+        text-align: justify;
+    }
+
+    #content dl#bank_info  {
+        margin: 0 5% 0 5%;
+    }
+
+    #content #bank_info dt {
+        float: left;
+        clear: left;
+        width: 150px;
+        font-weight: 700;
+        font-family: var(--ff-regular);
+        margin-block-start: 5px;
+    }
+
+    #content #bank_info dd {
+        float: left;
+        padding-left: 0;
+        text-indent: 0;
+        margin-left: 0;
+        font-family: var(--ff-regular);
+    }
+
+    #content #contacts {
+        text-indent: 0;
+    }
+
+    #content #contacts p {
+        text-indent: 0;
+        padding: 0 5% 0 5%;
+    }
+
+    #content #contacts a {
+        padding: 0 5% 0 5%;
+    }
+
+    #footer::before{
+        content: '';
+        display: inline-block;
+        width: 90%;
+        height: 2px;
+        background-color: black;
+        margin: 0 5% 0 5%;
+    }
+
+    #footer {
+        padding: 0 0 0 0;
+    }
+
+    #footer>p { 
+        font-family: var(--ff-title);
+        font-variant-caps: titling-caps;
+        font-size: 2rem;
+        font-weight: 500;
+        text-align: center;
+        display: block
+    }
+
+    #footer p {
+        cursor: pointer;
+    }
+
+    #footer p.privacy_link {
+        cursor: pointer;
+        font-family: var(--ff-regular);
+        font-size: 1rem;
+    }
 
 
    }

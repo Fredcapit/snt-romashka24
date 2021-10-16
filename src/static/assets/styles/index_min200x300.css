@@ -1,25 +1,22 @@
 @media screen  and (max-width: 499px){
-    div,
-p,
-article,
-section,
-main {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-}
+
+    div,p,article,section,main {
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+    }
 
     body {
-    margin: 0 0 0 0;
-
+        margin: 0 0 0 0;
     }
+
     #root {
         margin: 0 0 0 0;    
         display: block;
     }
+
     div#root>div{
         display: none;
     }
-
 
     main {
         display: grid !important;
@@ -27,21 +24,24 @@ main {
         margin: 0 5% 0 5%;
         height: 100vh;
     }
+
     #header {
         font-family: var(--ff-title);
         font-size: 10vw;
         text-align: center;
         display: block;
-        width: 100%;
-       
+        width: 100%; 
     }
+
     #header p:first-of-type{
         cursor:pointer;
     }
+
     #header>p:nth-child(2){
         font-size: 4vw;
-        font-family: Winston;
+        font-family: var(--ff-regular);
     }
+
     #header::after{
         content: '';
         display: block;
@@ -50,42 +50,48 @@ main {
         background-color: black;
         margin-left: 5%;
         margin-right: 5%;
-        
     }
+
     #content {
         display: grid !important;
         grid-template-rows: 1fr 80% ;
         height: 100%;
-        
     }
+
     h1,h2,h3 {
         margin-block-start: 5px;
         margin-inline-end: 5px;
     }
+
     #content>h1{
         text-align: center;
-        font-family: Maler;
+        font-family: var(--ff-regular);
         font-size: 8vw;
     }
+
     #content>h2{
         text-align: center;
-        font-family: Maler;
+        font-family: var(--ff-regular);
         font-size: 6vw;
     }
+
     #content>h3{
         text-align: center;
-        font-family: 'Winston';
+        font-family: var(--ff-regular);
         font-size: 4vw;
     }
+
     #content>div {
-        font-family: 'Winston';
+        font-family: var(--ff-regular);
         margin: 0 5% 0 5% ;
         overflow: auto;
     }
+
     #content #goals li{
         padding-top: 10px;
         text-align: justify;
     }
+
     div.title_content{
         overflow: hidden !important;
     }
@@ -96,73 +102,77 @@ main {
         margin: 0 5% 0 5%;
         overflow: hidden;
     }
+
     #content dl#bank_info  {
         margin: 0 5% 0 5%;
         overflow: auto;
         font-size: 4vw;
     }
+
     #content #bank_info dt {
         float: left;
         clear: left;
         width: 150px;
         font-weight: 700;
-        font-family: Winston;
+        font-family: var(--ff-regular);
         margin-block-start: 5px;
     }
+
     #content #bank_info dd {
         float: left;
         padding-left: 0;
         text-indent: 0;
         margin-left: 0;
-        font-family: Winston;
+        font-family: var(--ff-regular);
     }
+
     #content p{
         text-align: justify;
         text-indent: 6vw;
         padding: 0 5% 0 5%;
     }
+
     #content #contacts p {
         text-indent: 0;
         padding: 0 5% 0 5%;
     }
+
     #content #contacts a {
         padding: 0 5% 0 5%;
     }
+
     #footer::before{
-    content: '';
-    display: inline-block;
-    width: 90%;
-    height: 2px;
-    background-color: black;
-    
-    margin: 0 5% 0 5%;
-}
-ul.downloads {
-    margin: 0 30% 0 20%;
-    font-family: 'Winston';
-    font-size: 1em;
-}
+        content: '';
+        display: inline-block;
+        width: 90%;
+        height: 2px;
+        background-color: black;
+        margin: 0 5% 0 5%;
+    }
 
-ul.site_menu{
+    ul.downloads {
+        margin: 0 30% 0 20%;
+        font-family: var(--ff-regular);
+        font-size: 1em;
+    }
 
-    margin-left: 20%;
-    margin-right: 20%;
-    font-family: 'maler';
-    font-size: 4vw;
+    ul.site_menu{
+        margin-left: 20%;
+        margin-right: 20%;
+        font-family: var(--ff-regular);
+        font-size: 4vw;
+    }
 
-}
-ul.site_menu>li{
-    margin-top: 1em;
-    cursor: pointer;
-}
+    ul.site_menu>li{
+        margin-top: 1em;
+        cursor: pointer;
+    }
 
-ul.site_menu>li:hover{
-   
-   transition-property: background-color;
-   transition-duration: .8s;
-  background-color: rgb(103,246,74);
-   
-}
+    ul.site_menu>li:hover{
+        transition-property: background-color;
+        transition-duration: .8s;
+        background-color: rgb(103,246,74);
+    }
 
 
 
@@ -183,7 +193,7 @@ ul.site_menu>li:hover{
 }
 #footer p.privacy_link {
     cursor: pointer;
-    font-family: 'Winston';
+    font-family: var(--ff-regular);
     font-size: 4vw;
 
 }

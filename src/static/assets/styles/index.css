@@ -1,5 +1,6 @@
 :root {
-    --ff-title: 'Maler'
+    --ff-title: 'Maler';
+    --ff-regular: 'Winston';
 }
 @font-face {
     font-family: "Maler";
@@ -8,7 +9,7 @@
     font-display: block;
     /* Браузер сначала попробует найти шрифт локально */
     src:   local("Maler"),       /* Если не получилось, загрузит woff2 */
-         url("../preload/fonts/Maler.ttf") format("opentype"); 
+         url("../preload/fonts/subset-Maler-Regular.ttf") format("opentype"); 
          
    }
 @font-face {

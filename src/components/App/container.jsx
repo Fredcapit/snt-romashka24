@@ -1,14 +1,14 @@
 
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { actions } from './actions';
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
+// import { actions } from './actions';
 
 import Header from './components/Header/container';
 import Footer from './components/Footer/container';
 import Content from './components/Content/container';
 
-class App extends Component {
+export default class App extends Component {
 
   render() {
     return (
@@ -27,7 +27,7 @@ class App extends Component {
   }
 }
 
-export default connect(
-  state => state,
-  dispatch => bindActionCreators(actions, dispatch)
-)(App)
+// export default connect(
+//   state => state,
+//   dispatch => bindActionCreators(actions, dispatch)
+// )(App)

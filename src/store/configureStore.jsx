@@ -3,8 +3,7 @@ import { createBrowserHistory } from 'history';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { reducer } from './reducer';
-import { validateEmail } from './middleware/emailValidation';
-import { email_send_timer } from './middleware/email_sent/middleware'
+
 export const history = createBrowserHistory()
 export default function configureStore(initialState) {
 

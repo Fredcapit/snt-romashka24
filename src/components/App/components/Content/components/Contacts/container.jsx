@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+//import { bindActionCreators } from 'redux';
 // import { actions } from './actions';
 
-import title_img from '@img/title_img.webp';
+
 
 class Content extends Component {
     render() {
@@ -16,7 +16,7 @@ class Content extends Component {
 
                     <h4>Председатель Товарищества:</h4>
                     <p>Авдеева Ксения Владимировна</p>
-                    <a href="tel:+7910890311">тел.: +7 910 89 03 11</a>
+                    <a href="tel:+79108890311">тел.: +7 910 889 03 11</a>
                 </div>
             </div>
         )

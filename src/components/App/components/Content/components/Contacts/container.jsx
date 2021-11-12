@@ -18,7 +18,7 @@ class Content extends Component {
                     <p>Авдеева Ксения Владимировна</p>
                     <a href="tel:+79108890311">тел.: +7 910 889 03 11</a>
                     <br />
-                    <a href="mailto:avdeevakv@snt-romashka24.ru?subject=[from_site]:">avdeevakv @snt-romashka24.ru</a>
+                    <a href="mailto:avdeevakv@snt-romashka24.ru?subject=[from_site]:">avdeevakv@snt-romashka24.ru</a>
                 </div>
             </div>
         )

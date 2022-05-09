@@ -36,5 +36,5 @@ jobs:
     - run: cat "$HOME/.ssh/key"
     - run: chmod 600 "$HOME/.ssh/key"
     #Deploy
-    - run: cd ./build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p 22 -c aes256-cbc -oKexAlgorithms=+diffie-hellman-group1-sha1" --archive --compress --delete . root@195.133.46.76:/var/www/sites/snt-romashka24
+    - run: cd ./build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p 22 -c aes256-ctr -oKexAlgorithms=+diffie-hellman-group1-sha1" --archive --compress --delete . root@195.133.46.76:/var/www/sites/snt-romashka24
     

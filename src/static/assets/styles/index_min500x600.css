@@ -16,14 +16,12 @@
         margin: 0 0 0 0;
         height: 100vh;
         min-height: 650px;
-        display: grid;
-        grid-template-rows: 1fr 80% 1fr;
     }
 
     main {
         box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
         display: grid !important;
-        grid-template-rows: 5rem 70% 1fr;
+        grid-template-rows: 5rem 5fr 1fr;
         margin: 0 5% 0 5% !important;
     }
 

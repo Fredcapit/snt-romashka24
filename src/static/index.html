@@ -17,13 +17,13 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root">
-    <p id='error_text'></p>
+    
   </div>
   <script type="text/javascript">
     window.onload = function () {
-      var p = document.getElementById('error_text');
+      var p = document.getElementById('root');
       if (p && p !== undefined && p !== null) {
-        p.textContent = 'Ваш браузер не может отобразить эту страницу. Возпользуйтесь другим браузером таким как Chrome, Firefox'
+        p.innerHTML = '<p>Ваш браузер не может отобразить эту страницу. Возпользуйтесь другим браузером таким как Chrome, Firefox</p>'
       }
     }
 

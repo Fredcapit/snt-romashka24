@@ -12,16 +12,16 @@ export default class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      
 
-        <div></div>
+        
         <main>
           <Header />
           <Content />
           <Footer />
         </main>
-        <div></div>
-      </React.Fragment>
+        
+      
 
     )
   }
